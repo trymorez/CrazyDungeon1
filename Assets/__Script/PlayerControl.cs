@@ -17,12 +17,15 @@ public class PlayerControl : MonoBehaviour
     [SerializeField] Transform bottom;
     [SerializeField] Vector2 bottomSize = new Vector2(2f, 2f);
     [SerializeField] LayerMask bottomLayer;
-    [SerializeField] bool canJump = true;
     [SerializeField] bool isJumping = false;
+    [SerializeField] float fallGravity = 2.0f;
+    float origGravity;
 
     [Header("--- Side Check ---")]
     [SerializeField] Transform side;
     [SerializeField] Vector2 sideSize = new Vector2(2f, 2f);
+    [SerializeField] LayerMask sideLayer;
+    [SerializeField] float sideSlideSpeed = -2.0f;
     bool isOnWall;
 
 
@@ -32,21 +35,51 @@ public class PlayerControl : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        origGravity = rb.gravityScale;
         animator = GetComponent<Animator>();
+        
     }
 
     void Update()
     {
         rb.linearVelocityX = moveX * moveSpeed;
+
         CheckDirection();
         CheckBottom();
+        CheckSide();
+        accelFalling();
+    }
+
+    void accelFalling()
+    {
+        if (rb.linearVelocityY < 0)
+        {
+            rb.gravityScale = origGravity * fallGravity;
+        }
+    }
+
+    bool IsTouchingSide()
+    {
+        return Physics2D.OverlapBox(side.position, sideSize, 0, sideLayer);
+    }    
+
+    void CheckSide()
+    {
+        if (IsTouchingSide() && isJumping)
+        {
+            rb.linearVelocityY = Mathf.Max(rb.linearVelocityY, sideSlideSpeed);
+        }
     }
 
     void CheckBottom()
     {
+        if (rb.linearVelocityY > 0)
+        {
+            return;
+        }
         if (Physics2D.OverlapBox(bottom.position, bottomSize, 0, bottomLayer))
         {
-            canJump = true;
+            isJumping = false;
         }
     }
 
@@ -73,20 +106,15 @@ public class PlayerControl : MonoBehaviour
 
     public void Jump(InputAction.CallbackContext context)
     {
-        if (isJumping)
+        if (context.performed && !isJumping)
         {
-            return;
-        }
-
-        if (context.performed && canJump)
-        {
+            rb.gravityScale = origGravity;
+            isJumping = true;
             rb.linearVelocityY = jumpForce;
-            canJump = false;
         }
-        else if (context.canceled)
+        else if (context.canceled && rb.linearVelocityY > 0)
         {
-            rb.linearVelocityY = rb.linearVelocityY / 2f;
-            canJump = false;
+            rb.linearVelocityY *= 0.5f;
         }
     }
 
