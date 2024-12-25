@@ -9,8 +9,8 @@ public class PlayerControl : MonoBehaviour
     Animator animator;
 
     [Header("--- Movement ---")]
-    float moveX;
     [SerializeField] float moveSpeed = 8f;
+    float moveX;
     bool isFacingRight = true;
 
     [Header("--- Bottom Check ---")]
@@ -19,13 +19,13 @@ public class PlayerControl : MonoBehaviour
     [SerializeField] LayerMask bottomLayer;
     [SerializeField] bool isJumping = false;
     [SerializeField] float fallGravity = 2.0f;
-    float origGravity;
+    float gravityBase;
 
     [Header("--- Side Check ---")]
     [SerializeField] Transform side;
     [SerializeField] Vector2 sideSize = new Vector2(2f, 2f);
     [SerializeField] LayerMask sideLayer;
-    [SerializeField] float sideSlideSpeed = -2.0f;
+    [SerializeField] float slideSpeed = -1.5f;
     bool isOnWall;
 
 
@@ -35,8 +35,8 @@ public class PlayerControl : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        origGravity = rb.gravityScale;
-        animator = GetComponent<Animator>();
+        gravityBase = rb.gravityScale;
+        animator = GetComponentInChildren<Animator>();
         
     }
 
@@ -44,17 +44,30 @@ public class PlayerControl : MonoBehaviour
     {
         rb.linearVelocityX = moveX * moveSpeed;
 
-        CheckDirection();
-        CheckBottom();
-        CheckSide();
-        accelFalling();
+        DirectionCheck();
+        BottomCheck();
+        SideCheck();
+        FallingAccel();
+        AnimationHandle();
     }
 
-    void accelFalling()
+    void AnimationHandle()
+    {
+
+        animator.SetBool("isWalking", false);
+        if (!isJumping && Mathf.Abs(moveX)>0.1f)
+        {
+            animator.SetBool("isWalking", true);
+        }
+        animator.SetBool("isOnWall", isOnWall);
+        animator.SetFloat("velocityY", rb.linearVelocityY);
+    }
+
+    void FallingAccel()
     {
         if (rb.linearVelocityY < 0)
         {
-            rb.gravityScale = origGravity * fallGravity;
+            rb.gravityScale = gravityBase * fallGravity;
         }
     }
 
@@ -63,15 +76,22 @@ public class PlayerControl : MonoBehaviour
         return Physics2D.OverlapBox(side.position, sideSize, 0, sideLayer);
     }    
 
-    void CheckSide()
+    void SideCheck()
     {
         if (IsTouchingSide() && isJumping)
         {
-            rb.linearVelocityY = Mathf.Max(rb.linearVelocityY, sideSlideSpeed);
+            isOnWall = true;
+            rb.linearVelocityY = Mathf.Max(rb.linearVelocityY, slideSpeed);
+            
+        }
+        else
+        {
+            isOnWall = false;
+            
         }
     }
 
-    void CheckBottom()
+    void BottomCheck()
     {
         if (rb.linearVelocityY > 0)
         {
@@ -83,7 +103,7 @@ public class PlayerControl : MonoBehaviour
         }
     }
 
-    void ChangeDirection()
+    void DirectionChange()
     {
         isFacingRight = !isFacingRight;
         Vector3 ls = rb.transform.localScale;
@@ -91,11 +111,11 @@ public class PlayerControl : MonoBehaviour
         rb.transform.localScale = ls;
     }
 
-    void CheckDirection()
+    void DirectionCheck()
     {
         if (isFacingRight && moveX < 0 || !isFacingRight && moveX > 0)
         {
-            ChangeDirection();
+            DirectionChange();
         }
     }
 
@@ -108,7 +128,7 @@ public class PlayerControl : MonoBehaviour
     {
         if (context.performed && !isJumping)
         {
-            rb.gravityScale = origGravity;
+            rb.gravityScale = gravityBase;
             isJumping = true;
             rb.linearVelocityY = jumpForce;
         }
@@ -117,8 +137,6 @@ public class PlayerControl : MonoBehaviour
             rb.linearVelocityY *= 0.5f;
         }
     }
-
-
 
     void OnDrawGizmosSelected()
     {
