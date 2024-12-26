@@ -10,6 +10,7 @@ public class PlayerControl : MonoBehaviour
 
     [Header("--- Movement ---")]
     [SerializeField] float moveSpeed = 8f;
+    [SerializeField] float moveSpeedOnAir = 4f;
     float moveX;
     bool isFacingRight = true;
 
@@ -28,9 +29,10 @@ public class PlayerControl : MonoBehaviour
     [SerializeField] float slideSpeed = -1.5f;
     bool isOnWall;
 
-
     [Header("--- Jump ---")]
     [SerializeField] float jumpForce = 8f;
+
+    [SerializeField] ParticleSystem dustFX;
 
     void Start()
     {
@@ -42,7 +44,14 @@ public class PlayerControl : MonoBehaviour
 
     void Update()
     {
-        rb.linearVelocityX = moveX * moveSpeed;
+        if (!isJumping)
+        {
+            rb.linearVelocityX = moveX * moveSpeed;
+        }
+        else
+        {
+            rb.linearVelocityX = moveX * moveSpeedOnAir;
+        }
 
         DirectionCheck();
         BottomCheck();
@@ -128,6 +137,7 @@ public class PlayerControl : MonoBehaviour
     {
         if (context.performed && !isJumping)
         {
+            dustFX.Play();
             rb.gravityScale = gravityBase;
             isJumping = true;
             rb.linearVelocityY = jumpForce;
