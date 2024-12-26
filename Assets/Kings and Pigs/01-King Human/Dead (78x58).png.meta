@@ -1,10 +1,19 @@
 fileFormatVersion: 2
-guid: 7975d8ebc1636384090fca699d6a08eb
+guid: 8b449b1cfb7f0204186ba429f716a9c6
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -8566028455312386561
-    second: Chain_0
+      213: 4689127793708524886
+    second: Dead (78x58)_0
+  - first:
+      213: 7001614322767226673
+    second: Dead (78x58)_1
+  - first:
+      213: 3236711963942979464
+    second: Dead (78x58)_2
+  - first:
+      213: -2142470299157363264
+    second: Dead (78x58)_3
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -37,7 +46,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 0
+    filterMode: 1
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -51,7 +60,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 16
+  spritePixelsToUnits: 100
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -75,7 +84,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 0
+    textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -100,13 +109,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Chain_0
+      name: Dead (78x58)_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 8
-        height: 8
+        x: 5
+        y: 13
+        width: 39
+        height: 28
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -115,8 +124,74 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: ff59731318a5f1980800000000000000
-      internalID: -8566028455312386561
+      spriteID: 655686262e0231140800000000000000
+      internalID: 4689127793708524886
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dead (78x58)_1
+      rect:
+        serializedVersion: 2
+        x: 79
+        y: 8
+        width: 40
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 137e3d2612bba2160800000000000000
+      internalID: 7001614322767226673
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dead (78x58)_2
+      rect:
+        serializedVersion: 2
+        x: 156
+        y: 10
+        width: 40
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8870413e16c1bec20800000000000000
+      internalID: 3236711963942979464
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dead (78x58)_3
+      rect:
+        serializedVersion: 2
+        x: 233
+        y: 8
+        width: 40
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0c586ec3d9a6442e0800000000000000
+      internalID: -2142470299157363264
       vertices: []
       indices: 
       edges: []
@@ -125,7 +200,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: fb6ec862e0469b0499af54e72943f2c3
+    spriteID: 
     internalID: 0
     vertices: []
     indices: 
@@ -134,8 +209,7 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable:
-      Chain_0: -8566028455312386561
+    nameFileIdTable: {}
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

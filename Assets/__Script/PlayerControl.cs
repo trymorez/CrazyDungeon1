@@ -34,6 +34,18 @@ public class PlayerControl : MonoBehaviour
 
     [SerializeField] ParticleSystem dustFX;
 
+    bool isGoingUp {
+        get {
+            return rb.linearVelocityY > 0;
+        }
+    }
+    bool isGoingDown {
+        get {
+            return rb.linearVelocityY < 0;
+        }
+    }
+
+
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -102,7 +114,7 @@ public class PlayerControl : MonoBehaviour
 
     void BottomCheck()
     {
-        if (rb.linearVelocityY > 0)
+        if (isGoingUp)
         {
             return;
         }
@@ -135,14 +147,18 @@ public class PlayerControl : MonoBehaviour
 
     public void Jump(InputAction.CallbackContext context)
     {
-        if (context.performed && !isJumping)
+        if (!Physics2D.OverlapBox(bottom.position, bottomSize, 0, bottomLayer))
+        {
+            return;
+        }
+            if (context.performed && !isJumping)
         {
             dustFX.Play();
             rb.gravityScale = gravityBase;
             isJumping = true;
             rb.linearVelocityY = jumpForce;
         }
-        else if (context.canceled && rb.linearVelocityY > 0)
+        else if (context.canceled && isGoingUp)
         {
             rb.linearVelocityY *= 0.5f;
         }
