@@ -5,21 +5,30 @@ using UnityEngine;
 public class SpikeController : MonoBehaviour
 {
     [SerializeField] enum ePushDirection { up, down, left, right }
+    [SerializeField] ePushDirection pushDirection = ePushDirection.up;
+    [SerializeField] LayerMask obstacleLayer;
     [SerializeField] float pushLength = 3.5f;
     [SerializeField] float pushSpeed = 3f;
     [SerializeField] float pullSpeed = 2f;
     [SerializeField] float cycleDelay = 0.5f;
     [SerializeField] GameObject[] chains;
     bool initialized = true;
+    bool isBlock = false;
+    float direction = 1f;
     Rigidbody2D rb;
 
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        if (pushDirection == ePushDirection.down || pushDirection == ePushDirection.left)
+        {
+            direction *= -1f;            
+        }
     }
 
     void Update()
     {
+        
         if (initialized)
         {
             StartCoroutine(SpikePush());
@@ -32,33 +41,52 @@ public class SpikeController : MonoBehaviour
         float pushProgress = 0f;
         initialized = false;
 
-        while (pushProgress <= pushLength)
+        yield return new WaitForSeconds(cycleDelay);
+
+        while (pushProgress <= pushLength && !isBlock)
         {
             pushProgress += pushSpeed * Time.deltaTime;
-            rb.transform.position = origPosition + new Vector3(0, pushProgress, 0);
-            for (int i = 0; i < chains.Length-1; i++)
+            if (pushDirection == ePushDirection.right || pushDirection == ePushDirection.left)
             {
-                if (pushProgress >= 0.3 + i * 0.386)
-                {
-                    chains[i+1].SetActive(true);
-                }
+                rb.transform.position = origPosition + new Vector3(pushProgress * direction, 0, 0);
+            }
+            else
+            {
+                rb.transform.position = origPosition + new Vector3(0, pushProgress * direction, 0);
             }
             yield return null;
         }
-        yield return new WaitForSeconds(cycleDelay);
+        
         while (pushProgress >= 0)
         {
             pushProgress -= pullSpeed * Time.deltaTime;
-            rb.transform.position = origPosition + new Vector3(0, pushProgress, 0);
-            for (int i = 0; i < chains.Length-1; i++)
+            if (pushDirection == ePushDirection.right || pushDirection == ePushDirection.left)
             {
-                if (pushProgress <= i * 0.386)
-                {
-                    chains[i+1].SetActive(false);
-                }
+                rb.transform.position = origPosition + new Vector3(pushProgress * direction, 0, 0);
+            }
+            else
+            {
+                rb.transform.position = origPosition + new Vector3(0, pushProgress * direction, 0);
             }
             yield return null;
         }
+        rb.transform.position = origPosition;
+        pushProgress = 0f;
         initialized = true;
+    }
+
+    void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (((1 << collision.gameObject.layer) & obstacleLayer) != 0)
+        {
+            isBlock = true;
+        }
+    }
+    void OnCollisionExit2D(Collision2D collision)
+    {
+        if (((1 << collision.gameObject.layer) & obstacleLayer) != 0)
+        {
+            isBlock = false;
+        }
     }
 }
