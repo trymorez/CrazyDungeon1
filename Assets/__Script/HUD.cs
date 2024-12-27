@@ -4,13 +4,10 @@ using UnityEngine;
 
 public class HUD : MonoBehaviour
 {
-    public PlayerHealth playerHealth;
-
     void Start()
     {
-        playerHealth.OnHealthChanged.AddListener(UpdateHealth);
+        PlayerHealth.OnHealthChanged += UpdateHealth;
     }
-
     void UpdateHealth(int health)
     {
         Debug.Log(health);
