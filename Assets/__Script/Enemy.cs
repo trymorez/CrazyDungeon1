@@ -11,10 +11,12 @@ public class Enemy : MonoBehaviour
     [SerializeField] protected int moveSpeed;
     [SerializeField] protected bool isFacingRight;
     protected Rigidbody2D rb;
+    protected Animator animator;
 
     protected virtual void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        animator = rb.GetComponentInChildren<Animator>();
     }
 
     public void Dead()

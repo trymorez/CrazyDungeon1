@@ -25,6 +25,7 @@ public class EnemyMushroom : Enemy
             direction = isFacingRight ? 1 : -1;
             // rb.linearVelocityX = direction * moveSpeed * Time.deltaTime;
             rb.AddForceX(direction * moveSpeed * Time.deltaTime, ForceMode2D.Impulse);
+            animator.SetFloat("velocityX", Mathf.Abs(rb.linearVelocityX));
 
             if (!IsGrounded())
             {
