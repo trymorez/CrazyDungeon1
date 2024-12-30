@@ -40,12 +40,11 @@ public class SpikeController : MonoBehaviour
         Vector3 origPosition = rb.transform.position;
         float pushProgress = 0f;
         initialized = false;
-
         isSpikePushGoing = true;
+
         yield return new WaitForSeconds(cycleDelay);
 
         while (!GameController.isGameOn) yield return null;
-
         while (pushProgress <= pushLength && !isBlocked)
         {
             pushProgress += pushSpeed * Time.deltaTime;
@@ -53,9 +52,7 @@ public class SpikeController : MonoBehaviour
             yield return null;
         }
 
-        while (!GameController.isGameOn)
-            yield return null;
-
+        while (!GameController.isGameOn) yield return null;
         while (pushProgress >= 0)
         {
 
@@ -63,6 +60,7 @@ public class SpikeController : MonoBehaviour
             SetSpikePosition(origPosition, pushProgress);
             yield return null;
         }
+
         rb.transform.position = origPosition;
         pushProgress = 0f;
         isSpikePushGoing = false;
