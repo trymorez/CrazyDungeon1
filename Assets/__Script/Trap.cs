@@ -6,7 +6,7 @@ using UnityEngine.Events;
 public class Trap : MonoBehaviour
 {
     public int damage = 1;
-    public static UnityAction<int, Vector3> OnPlayerHit;
+    public static UnityAction<int, Vector3, bool> OnPlayerHit;
     Vector3 position;
 
     void OnCollisionEnter2D(Collision2D collision)
@@ -14,7 +14,7 @@ public class Trap : MonoBehaviour
         if (collision.collider.CompareTag("Player"))
         {
             position = transform.position;
-            OnPlayerHit?.Invoke(damage, position);
+            OnPlayerHit?.Invoke(damage, position, false);
         }
     }
 }

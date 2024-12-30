@@ -41,17 +41,23 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
-  - name: A
+  - name: Sorting Layer 1
     uniqueID: 1196479271
     locked: 0
-  - name: B
+  - name: Sorting Layer 2
     uniqueID: 4088206721
     locked: 0
-  - name: C
+  - name: Sorting Layer 3
     uniqueID: 2618301615
     locked: 0
-  - name: D
+  - name: Sorting Layer 4
     uniqueID: 1404376379
+    locked: 0
+  - name: Sorting Layer 5
+    uniqueID: 1670120525
+    locked: 0
+  - name: Sorting Layer 6
+    uniqueID: 1248991117
     locked: 0
   m_RenderingLayers:
   - Default

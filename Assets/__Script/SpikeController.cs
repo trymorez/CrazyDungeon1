@@ -13,7 +13,8 @@ public class SpikeController : MonoBehaviour
     [SerializeField] float cycleDelay = 0.5f;
     [SerializeField] GameObject[] chains;
     bool initialized = true;
-    bool isBlock = false;
+    bool isBlocked = false;
+    bool isSpikePushGoing = false;
     float direction = 1f;
     Rigidbody2D rb;
 
@@ -28,8 +29,7 @@ public class SpikeController : MonoBehaviour
 
     void Update()
     {
-        
-        if (initialized)
+        if (initialized && GameController.isGameOn && !isSpikePushGoing)
         {
             StartCoroutine(SpikePush());
         }
@@ -41,52 +41,58 @@ public class SpikeController : MonoBehaviour
         float pushProgress = 0f;
         initialized = false;
 
+        isSpikePushGoing = true;
         yield return new WaitForSeconds(cycleDelay);
 
-        while (pushProgress <= pushLength && !isBlock)
+        while (!GameController.isGameOn) yield return null;
+
+        while (pushProgress <= pushLength && !isBlocked)
         {
             pushProgress += pushSpeed * Time.deltaTime;
-            if (pushDirection == ePushDirection.right || pushDirection == ePushDirection.left)
-            {
-                rb.transform.position = origPosition + new Vector3(pushProgress * direction, 0, 0);
-            }
-            else
-            {
-                rb.transform.position = origPosition + new Vector3(0, pushProgress * direction, 0);
-            }
+            SetSpikePosition(origPosition, pushProgress);
             yield return null;
         }
-        
+
+        while (!GameController.isGameOn)
+            yield return null;
+
         while (pushProgress >= 0)
         {
+
             pushProgress -= pullSpeed * Time.deltaTime;
-            if (pushDirection == ePushDirection.right || pushDirection == ePushDirection.left)
-            {
-                rb.transform.position = origPosition + new Vector3(pushProgress * direction, 0, 0);
-            }
-            else
-            {
-                rb.transform.position = origPosition + new Vector3(0, pushProgress * direction, 0);
-            }
+            SetSpikePosition(origPosition, pushProgress);
             yield return null;
         }
         rb.transform.position = origPosition;
         pushProgress = 0f;
+        isSpikePushGoing = false;
         initialized = true;
+    }
+
+    void SetSpikePosition(Vector3 origPosition, float progress)
+    {
+        if (pushDirection == ePushDirection.right || pushDirection == ePushDirection.left)
+        {
+            rb.transform.position = origPosition + new Vector3(progress * direction, 0, 0);
+        }
+        else
+        {
+            rb.transform.position = origPosition + new Vector3(0, progress * direction, 0);
+        }
     }
 
     void OnCollisionEnter2D(Collision2D collision)
     {
         if (((1 << collision.gameObject.layer) & obstacleLayer) != 0)
         {
-            isBlock = true;
+            isBlocked = true;
         }
     }
     void OnCollisionExit2D(Collision2D collision)
     {
         if (((1 << collision.gameObject.layer) & obstacleLayer) != 0)
         {
-            isBlock = false;
+            isBlocked = false;
         }
     }
 }
