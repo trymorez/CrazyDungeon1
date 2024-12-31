@@ -19,8 +19,8 @@ Crazy Dungeon is a simple 2D platformer game that I'm currently developing to le
 
 ## Screenshots
 
-![screenshot](\screenshot\crazydungeon01.jpg)
-![screenshot](\screenshot\crazydungeon02.jpg)
+![screenshot](ScreenShot/CrazyDungeon01.jpg)
+![screenshot](ScreenShot/CrazyDungeon02.jpg)
 
 
 ## Used Assets
