@@ -24,11 +24,13 @@ public class PlayerHealth : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponentInChildren<Animator>();
         Trap.OnPlayerHit += TakeDamage;
+        Enemy.OnPlayerHit += TakeDamage;
     }
 
     void OnDisable()
     {
         Trap.OnPlayerHit -= TakeDamage;
+        Enemy.OnPlayerHit -= TakeDamage;
     }
 
     void TakeDamage(int damage, Vector3 hitPosition, bool instantDeath)
@@ -84,7 +86,14 @@ public class PlayerHealth : MonoBehaviour
 
     void PlayerDie()
     {
-        Debug.Log("dead!");
+        rb.constraints = RigidbodyConstraints2D.FreezeAll;
+        animator.SetTrigger("isDead");
+        StartCoroutine(Delay(1.3f));
+    }
+
+    IEnumerator Delay(float delay)
+    {
+        yield return new WaitForSeconds(delay);
         OnDead.Invoke();
     }
 }

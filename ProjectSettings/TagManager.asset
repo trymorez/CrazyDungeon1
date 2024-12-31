@@ -15,9 +15,9 @@ TagManager:
   - Bottom
   - Side
   - Player
-  - 
-  - 
-  - 
+  - Trap
+  - Enemy
+  - Enemy(Dead)
   - 
   - 
   - 

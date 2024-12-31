@@ -18,6 +18,7 @@ public class UIController : MonoBehaviour
     void GameOver()
     {
         GameController.isGameOn = false;
+        Time.timeScale = 0.0f;
         gameOver.SetActive(true);
     }
 }

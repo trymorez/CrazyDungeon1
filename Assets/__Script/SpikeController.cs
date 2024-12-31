@@ -44,7 +44,6 @@ public class SpikeController : MonoBehaviour
 
         yield return new WaitForSeconds(cycleDelay);
 
-        while (!GameController.isGameOn) yield return null;
         while (pushProgress <= pushLength && !isBlocked)
         {
             pushProgress += pushSpeed * Time.deltaTime;
@@ -52,7 +51,6 @@ public class SpikeController : MonoBehaviour
             yield return null;
         }
 
-        while (!GameController.isGameOn) yield return null;
         while (pushProgress >= 0)
         {
 

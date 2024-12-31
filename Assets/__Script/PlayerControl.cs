@@ -126,6 +126,7 @@ public class PlayerControl : MonoBehaviour
 
     void DirectionChange()
     {
+        dustFX.Play();
         isFacingRight = !isFacingRight;
         Vector3 ls = rb.transform.localScale;
         ls.x *= -1f;
