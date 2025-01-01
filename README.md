@@ -34,6 +34,8 @@ Crazy Dungeon is a simple 2D platformer game that I'm currently developing to le
 
 ## Version History
 
+- Enemy movement routine revised
+
 **v 0.15 (2024-12-31)**
 * Player character dead animation added
 * Game over screen now works properly

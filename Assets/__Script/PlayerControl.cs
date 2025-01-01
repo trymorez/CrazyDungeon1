@@ -148,15 +148,17 @@ public class PlayerControl : MonoBehaviour
 
     public void Jump(InputAction.CallbackContext context)
     {
-        if (!Physics2D.OverlapBox(bottom.position, bottomSize, 0, bottomLayer))
+        //if (!Physics2D.OverlapBox(bottom.position, bottomSize, 0, bottomLayer))
+        //{
+        //    return;
+        //}
+
+        if (context.performed && !isJumping)
         {
-            return;
-        }
-            if (context.performed && !isJumping)
-        {
-            dustFX.Play();
-            rb.gravityScale = gravityBase;
             isJumping = true;
+            dustFX.Play();
+            SoundSFXManager.Play("Jump");
+            rb.gravityScale = gravityBase;
             rb.linearVelocityY = jumpForce;
         }
         else if (context.canceled && isGoingUp)

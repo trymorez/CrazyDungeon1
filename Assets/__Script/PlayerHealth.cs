@@ -48,8 +48,11 @@ public class PlayerHealth : MonoBehaviour
             health = 0;
         }
 
-        OnHealthChanged?.Invoke(health);
-        animator.SetTrigger("isHit");
+        if (damage > 0)
+        {
+            OnHealthChanged?.Invoke(health);
+            animator.SetTrigger("isHit");
+        }
         rb.linearVelocity = Vector3.zero;
         rb.linearVelocityY = 1.0f * force;
 
@@ -57,7 +60,7 @@ public class PlayerHealth : MonoBehaviour
         {
             PlayerDie();
         }
-        else
+        else if (damage > 0)
         {
             StartCoroutine(MakeInvincible(1));
         }
