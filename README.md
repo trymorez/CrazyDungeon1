@@ -12,7 +12,7 @@ Crazy Dungeon is a simple 2D platformer game that I'm currently developing to le
 
 ## Authors
 
-- [@trymorez](https://www.github.com/trymorez) (trymorez@gmail.com)
+- [@trymorez](https://www.github.com/trymorez)
 
 
 
@@ -34,6 +34,14 @@ Crazy Dungeon is a simple 2D platformer game that I'm currently developing to le
 
 ## Version History
 
+**v 0.153 (2025-01-01)**
+-Sound volume is saved between sessions
+
+**v 0.152 (2025-01-01)**
+- Player short jump restored
+- Provides a little jump when the player character steps on an enemy
+- Implemented sound library and sound manager
+- Added basic jump sound effect
 - Enemy movement routine revised
 
 **v 0.15 (2024-12-31)**
