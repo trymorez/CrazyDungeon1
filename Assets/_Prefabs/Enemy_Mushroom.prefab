@@ -191,7 +191,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 1
   damage: 1
-  moveSpeed: 6
+  moveSpeed: 5
   isFacingRight: 0
   head: {fileID: 173218766903033259}
   headHeight: 0.26
@@ -217,7 +217,7 @@ Rigidbody2D:
   m_UseAutoMass: 0
   m_Mass: 1
   m_LinearDamping: 0
-  m_AngularDamping: 0.05
+  m_AngularDamping: 0
   m_GravityScale: 1
   m_Material: {fileID: 6200000, guid: 5534ec4a1f5582e448c11625f4847742, type: 2}
   m_IncludeLayers:
@@ -228,7 +228,7 @@ Rigidbody2D:
     m_Bits: 0
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 4
 --- !u!61 &5374787448963641944
 BoxCollider2D:

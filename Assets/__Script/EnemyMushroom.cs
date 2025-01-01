@@ -22,7 +22,7 @@ public class EnemyMushroom : Enemy
         while (isAlive)
         {
             direction = isFacingRight ? 1 : -1;
-            rb.transform.Translate(Vector3.right * (direction * moveSpeed * Time.deltaTime));
+            rb.linearVelocityX = direction * moveSpeed;
             animator.SetFloat("velocityX", Mathf.Abs(rb.linearVelocityX));
 
             if (!IsGrounded() || IsBlocked())
@@ -45,6 +45,8 @@ public class EnemyMushroom : Enemy
         ls = transform.localScale;
         ls.x *= -1;
         transform.localScale = ls;
+
+        // transform.Rotate(new Vector3(0, isFacingRight ? -180 : 180, 0));
     }
 
     bool IsBlocked()
@@ -60,13 +62,18 @@ public class EnemyMushroom : Enemy
         return Physics2D.Raycast(rayOrigin, Vector2.down, rayLength, platformMask);
     }
 
-    void OnDrawGizmos()
+    protected void OnDrawGizmos()
     {
-        DrawHeadGizmos();
+
         Vector3 rayOrigin = transform.position + (isFacingRight ? Vector3.right : Vector3.left) * 0.5f;
         Gizmos.color = Color.yellow;
         Gizmos.DrawLine(rayOrigin, rayOrigin + Vector3.down * rayLength);
         Gizmos.DrawLine(rayOrigin, rayOrigin + Vector3.right * ((isFacingRight ? 1 : -1) * 0.5f));
+    }
+
+    protected override void OnDrawGizmosSelected()
+    {
+        base.OnDrawGizmosSelected();
     }
 
 }

@@ -57,7 +57,7 @@ public class Enemy : MonoBehaviour
         Destroy(this.gameObject, 0.8f);
     }
 
-    protected void DrawHeadGizmos()
+    protected virtual void OnDrawGizmosSelected()
     {
         Gizmos.color = UnityEngine.Color.red;
         headPosition = head.transform.position;
