@@ -19,8 +19,8 @@ Crazy Dungeon is a simple 2D platformer game that I'm currently developing to le
 
 ## Screenshots
 
-![screenshot](ScreenShot/CrazyDungeon01.jpg)
-![screenshot](ScreenShot/CrazyDungeon02.jpg)
+![screenshot](ScreenShot/screenshot01.png)
+![screenshot](ScreenShot/screenshot02.jpg)
 
 
 ## Used Assets
@@ -34,8 +34,15 @@ Crazy Dungeon is a simple 2D platformer game that I'm currently developing to le
 
 ## Version History
 
+**v 0.16 (2025-01-02)**
+- Player attack (step on) sound added
+- Prevents players and enemies from colliding again for a certain amount of time after colliding
+- Button animation in game over screen restored
+- Changed colliders of player characters and enemy characters to capsule colliders to improve collision accuracy
+- Added text to show the level when starting a level
+
 **v 0.153 (2025-01-01)**
--Sound volume is saved between sessions
+- Sound volume is saved between sessions
 
 **v 0.152 (2025-01-01)**
 - Player short jump restored

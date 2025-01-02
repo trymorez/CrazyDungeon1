@@ -29,7 +29,7 @@ public class SpikeController : MonoBehaviour
 
     void Update()
     {
-        if (initialized && GameController.isGameOn && !isSpikePushGoing)
+        if (initialized && GameManager.isGameOn && !isSpikePushGoing)
         {
             StartCoroutine(SpikePush());
         }

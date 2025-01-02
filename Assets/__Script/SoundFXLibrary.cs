@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SoundSFXLibrary : MonoBehaviour
+public class SoundFXLibrary : MonoBehaviour
 {
     [SerializeField] SoundFXData[] soundFXData;
     Dictionary<string, List<AudioClip>> soundDictionary;

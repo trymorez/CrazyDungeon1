@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Audio;
 
-public class GameController : MonoBehaviour
+public class GameManager : MonoBehaviour
 {
-    static GameController instance;
+    static GameManager instance;
     public static bool isGameOn = true;
 
     void Awake()

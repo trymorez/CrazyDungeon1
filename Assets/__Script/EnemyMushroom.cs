@@ -27,14 +27,13 @@ public class EnemyMushroom : Enemy
 
             if (!IsGrounded() || IsBlocked())
             {
-                
                 isFacingRight = !isFacingRight;
                 DirectionChange();
             }
             yield return null;
         }
         rb.linearVelocity = Vector3.zero;
-        gameObject.layer = deadEnemyLayer;
+        gameObject.layer = enemyDeadLayer;
     }
 
     void DirectionChange()
@@ -56,7 +55,7 @@ public class EnemyMushroom : Enemy
     {
         Vector3 rayOrigin = transform.position + (isFacingRight ? Vector3.right : Vector3.left) * 0.5f;
         return Physics2D.Raycast(rayOrigin, Vector2.right * (isFacingRight ? 1: -1), 0.3f, platformMask);
-
+        
     }
 
     bool IsGrounded()

@@ -42,6 +42,7 @@ GameObject:
   - component: {fileID: 2234024913369140760}
   - component: {fileID: 7976863894969769748}
   - component: {fileID: 1772263925241207011}
+  - component: {fileID: 8320332434093223326}
   m_Layer: 11
   m_Name: Sprite
   m_TagString: Untagged
@@ -141,6 +142,18 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &8320332434093223326
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 895320247177861747}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 05ab6722f13ac67429f2c05f1663619f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &3784948590333112409
 GameObject:
   m_ObjectHideFlags: 0
@@ -153,6 +166,7 @@ GameObject:
   - component: {fileID: 6637965506702856407}
   - component: {fileID: 4854359802642446252}
   - component: {fileID: 5374787448963641944}
+  - component: {fileID: 5010534638821845350}
   m_Layer: 11
   m_Name: Enemy_Mushroom
   m_TagString: Untagged
@@ -199,7 +213,9 @@ MonoBehaviour:
   playerMask:
     serializedVersion: 2
     m_Bits: 512
-  deadEnemyLayer: 12
+  enemyLayer: 11
+  enemyDeadLayer: 12
+  enemyTmpLayer: 13
   platformMask:
     serializedVersion: 2
     m_Bits: 64
@@ -237,7 +253,7 @@ BoxCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3784948590333112409}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_Density: 1
   m_Material: {fileID: 0}
@@ -276,3 +292,40 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1.405106, y: 1.0773189}
   m_EdgeRadius: 0
+--- !u!70 &5010534638821845350
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3784948590333112409}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: 0.030343644, y: -0.088271335}
+  m_Size: {x: 1.3771977, y: 1.0461823}
+  m_Direction: 1

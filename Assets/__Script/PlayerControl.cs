@@ -157,7 +157,7 @@ public class PlayerControl : MonoBehaviour
         {
             isJumping = true;
             dustFX.Play();
-            SoundSFXManager.Play("Jump");
+            SoundFXManager.Play("Jump");
             rb.gravityScale = gravityBase;
             rb.linearVelocityY = jumpForce;
         }

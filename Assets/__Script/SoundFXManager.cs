@@ -1,11 +1,11 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public class SoundSFXManager : MonoBehaviour
+public class SoundFXManager : MonoBehaviour
 {
-    static SoundSFXManager instance;
+    static SoundFXManager instance;
     static AudioSource audioSource;
-    static SoundSFXLibrary soundSFXLibrary;
+    static SoundFXLibrary soundSFXLibrary;
     [SerializeField] Slider soundVolumeSlider;
     
     void Awake()
@@ -14,7 +14,7 @@ public class SoundSFXManager : MonoBehaviour
         {
             instance = this;
             audioSource = GetComponent<AudioSource>();
-            soundSFXLibrary = GetComponent<SoundSFXLibrary>();
+            soundSFXLibrary = GetComponent<SoundFXLibrary>();
             DontDestroyOnLoad(gameObject);
         }
         else

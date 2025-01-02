@@ -23,7 +23,7 @@ public class ChainBall : MonoBehaviour
 
     void Update()
     {
-        if (!GameController.isGameOn)
+        if (!GameManager.isGameOn)
         {
             return;
         }

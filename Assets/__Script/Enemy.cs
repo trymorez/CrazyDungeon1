@@ -16,7 +16,9 @@ public class Enemy : MonoBehaviour
     [SerializeField] protected float headHeight;
     [SerializeField] protected float headWidth;
     [SerializeField] protected LayerMask playerMask;
-    [SerializeField] protected int deadEnemyLayer = 12;
+    [SerializeField] protected int enemyLayer = 11;
+    [SerializeField] protected int enemyDeadLayer = 12;
+    [SerializeField] protected int enemyTmpLayer = 13;
 
     public static UnityAction<int, Vector3, bool> OnPlayerHit;
     protected Rigidbody2D rb;
@@ -41,6 +43,8 @@ public class Enemy : MonoBehaviour
         headPosition = head.transform.position;
         if (Physics2D.OverlapBox(headPosition, headSize, 0, playerMask))
         {
+            MakeUninteractable(2f);
+            SoundFXManager.Play("StepOn");
             animator.SetBool("isHit", true);
             OnPlayerHit?.Invoke(0, transform.position, false);
 
@@ -53,9 +57,20 @@ public class Enemy : MonoBehaviour
         //Player got hit
         else if (collision.collider.CompareTag("Player"))
         {
+            MakeUninteractable(2f);
             Vector3 position = transform.position;
             OnPlayerHit?.Invoke(damage, position, false);
         }
+    }
+
+    void MakeUninteractable(float duration)
+    {
+        gameObject.layer = enemyTmpLayer;
+        Invoke("Makeinteractable", duration);
+    }
+    void Makeinteractable()
+    {
+        gameObject.layer = enemyLayer;
     }
 
     void EnemyDead()
@@ -64,15 +79,10 @@ public class Enemy : MonoBehaviour
         Destroy(this.gameObject, 0.8f);
     }
 
-    protected virtual void OnDrawGizmosSelected()
+    void OnDrawGizmosSelected()
     {
         Gizmos.color = UnityEngine.Color.red;
         headPosition = head.transform.position;
         Gizmos.DrawWireCube(headPosition, headSize);
     }
-
-    //public void OnHitAnimationEnded()
-    //{
-    //    animator.SetBool("isHit", false);
-    //}
 }
