@@ -5,7 +5,7 @@ Crazy Dungeon is a simple 2D platformer game that I'm currently developing to le
 
 크레이지 던전은 간단한 2D 플랫포머 게임의 프로토타입이며, 유니티를 배우고 포트폴리오를 구축하기 위해서 개발하고 있습니다. 아직은 완전 초기 단계지만 다양한 적, 장애물, 플랫폼 유형을 추가할 예정입니다.
 
-- Recommended Unity version: Unity 6 (6000.0.26f1 and later)
+- Recommended Unity version: Unity 6 (6000.0.32f1 and later)
 
 
 
@@ -20,7 +20,7 @@ Crazy Dungeon is a simple 2D platformer game that I'm currently developing to le
 ## Screenshots
 
 ![screenshot](ScreenShot/screenshot01.png)
-![screenshot](ScreenShot/screenshot02.jpg)
+![screenshot](ScreenShot/screenshot02.png)
 
 
 ## Used Assets
@@ -33,6 +33,15 @@ Crazy Dungeon is a simple 2D platformer game that I'm currently developing to le
 
 
 ## Version History
+
+**v 0.18 (2025-01-03)**
+- Score system added
+- Score animation added(when you kill enemy)
+- Door animation added
+
+**v 0.17 (2025-01-03)**
+- Level progress mechanism(door) added.
+- Level(dummy) 2, 3 added.
 
 **v 0.16 (2025-01-02)**
 - Player attack (step on) sound added
