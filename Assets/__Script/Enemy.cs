@@ -58,6 +58,7 @@ public class Enemy : MonoBehaviour
         else if (collision.collider.CompareTag("Player"))
         {
             MakeUninteractable(2f);
+            SoundFXManager.Play("Hit");
             Vector3 position = transform.position;
             OnPlayerHit?.Invoke(damage, position, false);
         }

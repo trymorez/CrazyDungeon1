@@ -38,16 +38,6 @@ public class EnemyMushroom : Enemy
 
     void DirectionChange()
     {
-
-        //Vector3 ls = transform.localScale;
-        //ls.x *= -1;
-        //transform.localScale = ls;
-
-
-        //Vector3 currentRotation = transform.eulerAngles;
-        //currentRotation.y += 180;
-        //transform.eulerAngles = currentRotation;
-
         transform.Rotate(new Vector3(0, 180, 0));
     }
 

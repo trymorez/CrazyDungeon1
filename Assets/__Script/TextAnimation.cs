@@ -9,12 +9,12 @@ public class TextAnimation : MonoBehaviour
     [SerializeField] float duration = 1.5f;
     float elapsedTime;
     RectTransform rt;
-    TextMeshProUGUI textMeshPro;
+    TMP_Text textMeshPro;
 
     void Start()
     {
         rt = GetComponent<RectTransform>();
-        textMeshPro = GetComponent<TextMeshProUGUI>();
+        textMeshPro = GetComponent<TMP_Text>();
         StartCoroutine(Step1());
         
     }

@@ -9,7 +9,6 @@ public class PlayerHealth : MonoBehaviour
     public static UnityAction<int> OnHealthChanged;
     public static UnityAction OnDead;
 
-    [SerializeField] int healthMax = 3;
     int health;
     bool isInvincible;
 
@@ -19,7 +18,7 @@ public class PlayerHealth : MonoBehaviour
 
     void Start()
     {
-        health = healthMax;
+        health = GameManager.health;
         OnHealthChanged?.Invoke(health);
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponentInChildren<Animator>();
@@ -31,6 +30,7 @@ public class PlayerHealth : MonoBehaviour
     {
         Trap.OnPlayerHit -= TakeDamage;
         Enemy.OnPlayerHit -= TakeDamage;
+        GameManager.health = health;
     }
 
     void TakeDamage(int damage, Vector3 hitPosition, bool instantDeath)
@@ -90,6 +90,7 @@ public class PlayerHealth : MonoBehaviour
     void PlayerDie()
     {
         rb.constraints = RigidbodyConstraints2D.FreezeAll;
+        SoundFXManager.Play("Death");
         animator.SetTrigger("isDead");
         StartCoroutine(Delay(1.3f));
     }

@@ -205,7 +205,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 1
   damage: 1
-  moveSpeed: 5
+  moveSpeed: 4
   isFacingRight: 0
   head: {fileID: 173218766903033259}
   headHeight: 0.26
