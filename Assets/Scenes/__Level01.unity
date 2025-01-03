@@ -35672,6 +35672,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   heartPrefab: {fileID: 7249702887923115631, guid: 116b5e4c3982da34e9af3910443d3e81, type: 3}
   scoreText: {fileID: 43868644}
+  pointText: {fileID: 2116499633070012072, guid: 807e45139c23d9f40b6acea401f0776a, type: 3}
+  uiCanvas: {fileID: 1196068296}
 --- !u!114 &1820762874
 MonoBehaviour:
   m_ObjectHideFlags: 0
