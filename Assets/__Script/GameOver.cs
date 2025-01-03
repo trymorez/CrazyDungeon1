@@ -10,6 +10,7 @@ public class GameOver : MonoBehaviour
     {
         GameManager.isGameOn = true;
         Time.timeScale = 1.0f;
+        GameManager.health = 3;
         SceneManager.LoadScene(0);
     }
 

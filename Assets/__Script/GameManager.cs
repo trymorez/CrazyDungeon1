@@ -1,8 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Dynamic;
 using UnityEditor.SearchService;
 using UnityEngine;
 using UnityEngine.Audio;
+using UnityEngine.Events;
 using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
@@ -11,7 +13,10 @@ public class GameManager : MonoBehaviour
     public static bool isGameOn = true;
     public static int levelCurrent = 0;
     public static int levelMax = 2;
+    public static int healthMax = 3;
     public static int health = 3;
+    public static int score = 0;
+    public static UnityAction OnScoreChanged;
 
     void Awake()
     {
@@ -26,13 +31,18 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    public static void ScoreAdd(int scoreToAdd)
+    {
+        score += scoreToAdd;
+        OnScoreChanged?.Invoke();
+    }
+
     public static void LevelLoadNext()
     {
         if (++levelCurrent > levelMax)
         {
             levelCurrent = 0;
         }
-        Debug.Log(levelCurrent);
         SceneManager.LoadScene(levelCurrent);
     }
 

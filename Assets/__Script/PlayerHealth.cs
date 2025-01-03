@@ -9,7 +9,6 @@ public class PlayerHealth : MonoBehaviour
     public static UnityAction<int> OnHealthChanged;
     public static UnityAction OnDead;
 
-    int health;
     bool isInvincible;
 
     Rigidbody2D rb;
@@ -18,8 +17,7 @@ public class PlayerHealth : MonoBehaviour
 
     void Start()
     {
-        health = GameManager.health;
-        OnHealthChanged?.Invoke(health);
+        OnHealthChanged?.Invoke(GameManager.health);
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponentInChildren<Animator>();
         Trap.OnPlayerHit += TakeDamage;
@@ -30,7 +28,6 @@ public class PlayerHealth : MonoBehaviour
     {
         Trap.OnPlayerHit -= TakeDamage;
         Enemy.OnPlayerHit -= TakeDamage;
-        GameManager.health = health;
     }
 
     void TakeDamage(int damage, Vector3 hitPosition, bool instantDeath)
@@ -42,21 +39,22 @@ public class PlayerHealth : MonoBehaviour
             return;
         }
 
-        health -= damage;
-        if (health < 0)
+        GameManager.health -= damage;
+        if (GameManager.health < 0)
         {
-            health = 0;
+            GameManager.health = 0;
         }
 
         if (damage > 0)
         {
-            OnHealthChanged?.Invoke(health);
+            SoundFXManager.Play("Hit");
+            OnHealthChanged?.Invoke(GameManager.health);
             animator.SetTrigger("isHit");
         }
         rb.linearVelocity = Vector3.zero;
         rb.linearVelocityY = 1.0f * force;
 
-        if (health <= 0 || instantDeath)
+        if (GameManager.health <= 0 || instantDeath)
         {
             PlayerDie();
         }
@@ -69,7 +67,6 @@ public class PlayerHealth : MonoBehaviour
     IEnumerator MakeInvincible(float timer)
     {
         isInvincible = true;
-
         Renderer renderer = GetComponentInChildren<Renderer>();
 
         float blinkDuration = 0.1f;
@@ -83,7 +80,6 @@ public class PlayerHealth : MonoBehaviour
         }
 
         renderer.enabled = true;
-
         isInvincible = false;
     }
 

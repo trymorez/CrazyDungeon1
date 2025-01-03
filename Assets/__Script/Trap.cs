@@ -13,7 +13,6 @@ public class Trap : MonoBehaviour
     {
         if (collision.collider.CompareTag("Player"))
         {
-            SoundFXManager.Play("Hit");
             position = transform.position;
             OnPlayerHit?.Invoke(damage, position, false);
         }

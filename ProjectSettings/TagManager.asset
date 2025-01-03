@@ -19,7 +19,7 @@ TagManager:
   - Enemy
   - Enemy(Dead)
   - Enemy(Temporary)
-  - 
+  - Player(Weapon)
   - 
   - 
   - 

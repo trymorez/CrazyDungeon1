@@ -54,12 +54,19 @@ public class EnemyMushroom : Enemy
         return Physics2D.Raycast(rayOrigin, Vector2.down, rayLength, platformMask);
     }
 
-    protected void OnDrawGizmos()
+    void OnDrawGizmos()
     {
 
         Vector3 rayOrigin = transform.position + (isFacingRight ? Vector3.right : Vector3.left) * 0.5f;
         Gizmos.color = Color.yellow;
         Gizmos.DrawLine(rayOrigin, rayOrigin + Vector3.down * rayLength);
         Gizmos.DrawLine(rayOrigin, rayOrigin + Vector3.right * ((isFacingRight ? 1 : -1) * 0.5f));
+    }
+
+    void OnDrawGizmosSelected()
+    {
+        Gizmos.color = UnityEngine.Color.red;
+        headPosition = head.transform.position;
+        Gizmos.DrawWireCube(headPosition, headSize);
     }
 }

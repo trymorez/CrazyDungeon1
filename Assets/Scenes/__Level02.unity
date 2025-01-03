@@ -1993,6 +1993,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scrollSpeed: 1
+  scrollDirection: 0
 --- !u!483693784 &848404480
 TilemapRenderer:
   m_ObjectHideFlags: 0
@@ -34846,6 +34847,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   heartPrefab: {fileID: 7249702887923115631, guid: 116b5e4c3982da34e9af3910443d3e81, type: 3}
+  scoreText: {fileID: 43868644}
 --- !u!114 &1820762874
 MonoBehaviour:
   m_ObjectHideFlags: 0

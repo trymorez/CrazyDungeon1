@@ -16,6 +16,7 @@ public class Enemy : MonoBehaviour
     [SerializeField] protected float headHeight;
     [SerializeField] protected float headWidth;
     [SerializeField] protected LayerMask playerMask;
+    [SerializeField] protected LayerMask playerWeaponMask;
     [SerializeField] protected int enemyLayer = 11;
     [SerializeField] protected int enemyDeadLayer = 12;
     [SerializeField] protected int enemyTmpLayer = 13;
@@ -26,6 +27,10 @@ public class Enemy : MonoBehaviour
     protected Vector3 headSize;
     protected Vector3 headPosition;
     protected bool isAlive = true;
+    [SerializeField] protected int score;
+
+    public static UnityAction<Vector3, int> OnGettingPoint;
+
 
     protected virtual void Start()
     {
@@ -41,7 +46,7 @@ public class Enemy : MonoBehaviour
     {
         //Enemy got hit (on the head)
         headPosition = head.transform.position;
-        if (Physics2D.OverlapBox(headPosition, headSize, 0, playerMask))
+        if (Physics2D.OverlapBox(headPosition, headSize, 0, playerWeaponMask))
         {
             MakeUninteractable(2f);
             SoundFXManager.Play("StepOn");
@@ -50,6 +55,8 @@ public class Enemy : MonoBehaviour
 
             if (--currentHealth < 1)
             {
+                GameManager.ScoreAdd(score);
+                OnGettingPoint?.Invoke(transform.position, score);
                 EnemyDead();
             }
         }
@@ -57,8 +64,7 @@ public class Enemy : MonoBehaviour
         //Player got hit
         else if (collision.collider.CompareTag("Player"))
         {
-            MakeUninteractable(2f);
-            SoundFXManager.Play("Hit");
+            MakeUninteractable(1f);
             Vector3 position = transform.position;
             OnPlayerHit?.Invoke(damage, position, false);
         }

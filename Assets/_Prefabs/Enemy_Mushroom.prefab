@@ -209,16 +209,20 @@ MonoBehaviour:
   isFacingRight: 0
   head: {fileID: 173218766903033259}
   headHeight: 0.26
-  headWidth: 1.26
+  headWidth: 1.1
   playerMask:
     serializedVersion: 2
-    m_Bits: 512
+    m_Bits: 16896
+  playerWeaponMask:
+    serializedVersion: 2
+    m_Bits: 16384
   enemyLayer: 11
   enemyDeadLayer: 12
   enemyTmpLayer: 13
   platformMask:
     serializedVersion: 2
     m_Bits: 64
+  score: 2000
 --- !u!50 &4854359802642446252
 Rigidbody2D:
   serializedVersion: 5
