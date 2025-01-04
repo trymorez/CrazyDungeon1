@@ -19,8 +19,8 @@ Crazy Dungeon is a simple 2D platformer game that I'm currently developing to le
 
 ## Screenshots
 
-![screenshot](ScreenShot/screenshot01.png)
-![screenshot](ScreenShot/screenshot02.png)
+![screenshot](Assets/ScreenShot/screenshot01.png)
+![screenshot](Assets/ScreenShot/screenshot02.png)
 
 
 ## Used Assets
@@ -34,7 +34,7 @@ Crazy Dungeon is a simple 2D platformer game that I'm currently developing to le
 
 ## Version History
 
-**v 0.19 (2025-01-04)
+**v 0.19 (2025-01-04)**
 - Added instant death zone (level pit)
 - Added rotating spike ball
 - Score animation improved
