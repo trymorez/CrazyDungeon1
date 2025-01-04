@@ -23,11 +23,6 @@ public class ChainBall : MonoBehaviour
 
     void Update()
     {
-        if (!GameManager.isGameOn)
-        {
-            return;
-        }
-
         timeElapsed += Time.deltaTime;
         if (timeElapsed < delayAtStart)
         {

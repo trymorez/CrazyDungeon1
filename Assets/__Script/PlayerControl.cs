@@ -31,6 +31,8 @@ public class PlayerControl : MonoBehaviour
 
     [Header("--- Jump ---")]
     [SerializeField] float jumpForce = 8f;
+    [SerializeField] float jumpMax = 3.0f;
+    [SerializeField] float jumpStart = 8f;
 
     [SerializeField] ParticleSystem dustFX;
 
@@ -70,6 +72,11 @@ public class PlayerControl : MonoBehaviour
         SideCheck();
         FallingAccel();
         AnimationHandle();
+
+        if (transform.position.y - jumpStart > jumpMax)
+        {
+            jumpMax = transform.position.y - jumpStart;
+        }
     }
 
     void AnimationHandle()
@@ -86,9 +93,25 @@ public class PlayerControl : MonoBehaviour
 
     void FallingAccel()
     {
-        if (rb.linearVelocityY < 0)
+        if (isJumping)
+        {
+            if (transform.position.y - jumpStart > jumpMax)
+            {
+                rb.linearVelocityY = 0;
+            }
+        }
+        if (!isJumping && rb.linearVelocityY > 0)
+        {
+            rb.linearVelocityY = 0;
+        }
+
+            if (rb.linearVelocityY < 0)
         {
             rb.gravityScale = gravityBase * fallGravity;
+        }
+        else
+        {
+            rb.gravityScale = gravityBase;
         }
     }
 
@@ -148,18 +171,14 @@ public class PlayerControl : MonoBehaviour
 
     public void Jump(InputAction.CallbackContext context)
     {
-        //if (!Physics2D.OverlapBox(bottom.position, bottomSize, 0, bottomLayer))
-        //{
-        //    return;
-        //}
-
-        if (context.performed && !isJumping)
+        if (context.performed && !isJumping /* && Physics2D.OverlapBox(bottom.position, bottomSize, 0, bottomLayer) */)
         {
+            Debug.Log("jump!");
             isJumping = true;
             dustFX.Play();
             SoundFXManager.Play("Jump");
-            rb.gravityScale = gravityBase;
             rb.linearVelocityY = jumpForce;
+            jumpStart = transform.position.y;
         }
         else if (context.canceled && isGoingUp)
         {
