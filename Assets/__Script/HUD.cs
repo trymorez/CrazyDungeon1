@@ -38,20 +38,18 @@ public class HUD : MonoBehaviour
         Item.OnGettingPoint -= PointShow;
     }
 
-    void PointShow(Vector3 position, int point)
+    void PointShow(Vector3 pos, int point)
     {
-        Vector3 screenPosition = Camera.main.WorldToScreenPoint(position);
 
-        GameObject floatingText = Instantiate(pointText, uiCanvas);
-
-        floatingText.GetComponent<RectTransform>().position = screenPosition;
+        GameObject floatingText = Instantiate(pointText);
+        floatingText.transform.position = pos;
         PointAnimation pointAnimation = floatingText.GetComponent<PointAnimation>();
         pointAnimation.point = point;
     }
 
     void ScoreUpdate()
     {
-        scoreText.text = GameManager.score.ToString("D6");
+        scoreText.text = GameManager.score.ToString("N0");
     }
 
     void HealthUpdate(int health)

@@ -18,7 +18,7 @@ public class ChainBall : MonoBehaviour
         {
             swingRight = true;
         }
-        angleCurrent = angleStart;
+        angleCurrent = transform.rotation.z;
     }
 
     void Update()

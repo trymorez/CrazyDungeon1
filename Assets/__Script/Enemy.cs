@@ -44,7 +44,7 @@ public class Enemy : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D collision)
     {
-        //Enemy got hit (on the head)
+        //enemy got hit (on the head)
         headPosition = head.transform.position;
         if (Physics2D.OverlapBox(headPosition, headSize, 0, playerWeaponMask))
         {
@@ -61,7 +61,7 @@ public class Enemy : MonoBehaviour
             }
         }
 
-        //Player got hit
+        //player got hit
         else if (collision.collider.CompareTag("Player"))
         {
             MakeUninteractable(1f);

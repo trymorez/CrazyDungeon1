@@ -9,7 +9,7 @@ public class PointAnimation : MonoBehaviour
     [SerializeField] float duration = 1.5f;
     float elapsedTime;
     RectTransform rt;
-    TextMeshProUGUI textMeshPro;
+    TMP_Text textMeshPro;
     public int point;
     public Material[] materials;
     public float moveAmount = 20f;
@@ -17,7 +17,7 @@ public class PointAnimation : MonoBehaviour
     void Start()
     {
         rt = GetComponent<RectTransform>();
-        textMeshPro = GetComponent<TextMeshProUGUI>();
+        textMeshPro = GetComponent<TMP_Text>();
         textMeshPro.text = point.ToString();
         StartCoroutine(Step1());
         StartCoroutine(Step2());
@@ -26,7 +26,7 @@ public class PointAnimation : MonoBehaviour
 
     IEnumerator Step1()
     {
-        Vector3 startPosition = rt.anchoredPosition;
+        Vector3 startPosition = transform.position;
         Vector3 targetPosition = startPosition + new Vector3(0, moveAmount, 0);
 
         float elapsedTime = 0f;
@@ -37,7 +37,6 @@ public class PointAnimation : MonoBehaviour
             elapsedTime += Time.deltaTime;
             yield return null;
         }
-        rt.anchoredPosition = targetPosition;
 
         Destroy(gameObject);
     }

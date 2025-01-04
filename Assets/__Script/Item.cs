@@ -10,6 +10,7 @@ public class Item : MonoBehaviour
     [SerializeField] int score;
     [SerializeField] float moveDuration = 1.5f;
     [SerializeField] float moveAmount = 1f;
+    [SerializeField] string sound;
     public static UnityAction<Vector3, int> OnGettingPoint;
 
     void Start()
@@ -38,10 +39,12 @@ public class Item : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
-            animator.SetTrigger("Collected");
+            gameObject.layer = 13;
+            SoundFXManager.Play(sound);
+            animator.SetTrigger("collected");
             GameManager.ScoreAdd(score);
             OnGettingPoint?.Invoke(transform.position, score);
-            Destroy(gameObject, 1f);
+            Destroy(gameObject, 0.5f);
         }
     }
 

@@ -28,7 +28,6 @@ public class TilemapScroller : MonoBehaviour
 
     void Update()
     {
-        //transform.position = positionStart + Vector3.left * Mathf.Repeat(Time.time * scrollSpeed, transform.localScale.x);
         if (scrollDirection == eScrollDirection.left || scrollDirection == eScrollDirection.right)
         {
             transform.position = positionStart + Vector3.right * Mathf.Repeat(Time.time * scrollSpeed * directionX, transform.localScale.x);

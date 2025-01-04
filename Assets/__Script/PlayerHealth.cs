@@ -22,12 +22,14 @@ public class PlayerHealth : MonoBehaviour
         animator = GetComponentInChildren<Animator>();
         Trap.OnPlayerHit += TakeDamage;
         Enemy.OnPlayerHit += TakeDamage;
+        DeathZone.OnPlayerHit += TakeDamage;
     }
 
     void OnDisable()
     {
         Trap.OnPlayerHit -= TakeDamage;
         Enemy.OnPlayerHit -= TakeDamage;
+        DeathZone.OnPlayerHit -= TakeDamage;
     }
 
     void TakeDamage(int damage, Vector3 hitPosition, bool instantDeath)
