@@ -22,6 +22,7 @@ public class HUD : MonoBehaviour
         PlayerHealth.OnHealthChanged += HealthUpdate;
         GameManager.OnScoreChanged += ScoreUpdate;
         Enemy.OnGettingPoint += PointShow;
+        Item.OnGettingPoint += PointShow;
     }
 
     void Start()
@@ -34,6 +35,7 @@ public class HUD : MonoBehaviour
         PlayerHealth.OnHealthChanged -= HealthUpdate;
         GameManager.OnScoreChanged -= ScoreUpdate;
         Enemy.OnGettingPoint -= PointShow;
+        Item.OnGettingPoint -= PointShow;
     }
 
     void PointShow(Vector3 position, int point)

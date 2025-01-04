@@ -64,7 +64,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -75,10 +75,10 @@ TextureImporter:
   compressionQuality: 50
   spriteMode: 2
   spriteExtrude: 1
-  spriteMeshType: 1
+  spriteMeshType: 0
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 32
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -102,7 +102,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -123,6 +123,45 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WindowsStoreApps
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
@@ -130,10 +169,10 @@ TextureImporter:
       name: Big Diamond Idle (18x14)_0
       rect:
         serializedVersion: 2
-        x: 4
-        y: 1
-        width: 14
-        height: 12
+        x: 0
+        y: 0
+        width: 18
+        height: 14
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -152,10 +191,10 @@ TextureImporter:
       name: Big Diamond Idle (18x14)_1
       rect:
         serializedVersion: 2
-        x: 22
-        y: 1
-        width: 14
-        height: 12
+        x: 18
+        y: 0
+        width: 18
+        height: 14
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -174,10 +213,10 @@ TextureImporter:
       name: Big Diamond Idle (18x14)_2
       rect:
         serializedVersion: 2
-        x: 40
-        y: 1
-        width: 14
-        height: 12
+        x: 36
+        y: 0
+        width: 18
+        height: 14
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -196,10 +235,10 @@ TextureImporter:
       name: Big Diamond Idle (18x14)_3
       rect:
         serializedVersion: 2
-        x: 58
-        y: 1
-        width: 14
-        height: 12
+        x: 54
+        y: 0
+        width: 18
+        height: 14
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -218,10 +257,10 @@ TextureImporter:
       name: Big Diamond Idle (18x14)_4
       rect:
         serializedVersion: 2
-        x: 76
-        y: 1
-        width: 14
-        height: 12
+        x: 72
+        y: 0
+        width: 18
+        height: 14
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -240,10 +279,10 @@ TextureImporter:
       name: Big Diamond Idle (18x14)_5
       rect:
         serializedVersion: 2
-        x: 94
-        y: 1
-        width: 14
-        height: 12
+        x: 90
+        y: 0
+        width: 18
+        height: 14
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -262,10 +301,10 @@ TextureImporter:
       name: Big Diamond Idle (18x14)_6
       rect:
         serializedVersion: 2
-        x: 112
-        y: 1
-        width: 14
-        height: 12
+        x: 108
+        y: 0
+        width: 18
+        height: 14
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -284,10 +323,10 @@ TextureImporter:
       name: Big Diamond Idle (18x14)_7
       rect:
         serializedVersion: 2
-        x: 130
-        y: 1
-        width: 14
-        height: 12
+        x: 126
+        y: 0
+        width: 18
+        height: 14
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -306,10 +345,10 @@ TextureImporter:
       name: Big Diamond Idle (18x14)_8
       rect:
         serializedVersion: 2
-        x: 148
-        y: 1
-        width: 14
-        height: 12
+        x: 144
+        y: 0
+        width: 18
+        height: 14
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -328,10 +367,10 @@ TextureImporter:
       name: Big Diamond Idle (18x14)_9
       rect:
         serializedVersion: 2
-        x: 166
-        y: 1
-        width: 14
-        height: 12
+        x: 162
+        y: 0
+        width: 18
+        height: 14
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -350,7 +389,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: b73e31146f9481d46af3df3c2f01be4d
     internalID: 0
     vertices: []
     indices: 
@@ -359,7 +398,17 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Big Diamond Idle (18x14)_0: -4658123360840285283
+      Big Diamond Idle (18x14)_1: -9132469165398134140
+      Big Diamond Idle (18x14)_2: -317340658027101851
+      Big Diamond Idle (18x14)_3: -8617004404026540419
+      Big Diamond Idle (18x14)_4: -388936619253760004
+      Big Diamond Idle (18x14)_5: 7007702355635686782
+      Big Diamond Idle (18x14)_6: -5186337078384295754
+      Big Diamond Idle (18x14)_7: -3861491957359190046
+      Big Diamond Idle (18x14)_8: -1205625001301180620
+      Big Diamond Idle (18x14)_9: 7845550569223017404
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
