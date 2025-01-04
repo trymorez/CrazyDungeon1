@@ -34,6 +34,14 @@ Crazy Dungeon is a simple 2D platformer game that I'm currently developing to le
 
 ## Version History
 
+**v 0.19 (2025-01-04)
+- Added instant death zone (level pit)
+- Added rotating spike ball
+- Score animation improved
+- Gem item added
+- Fixed jumping anomaly at platform edges
+- Edited stage 1
+
 **v 0.18 (2025-01-03)**
 - Score system added
 - Score animation added(when you kill enemy)
