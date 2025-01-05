@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 7183682052908294259}
   - component: {fileID: 1746706979535593579}
   - component: {fileID: 4517863739994170303}
+  - component: {fileID: 849625894775414908}
   m_Layer: 10
   m_Name: Spikebar
   m_TagString: Untagged
@@ -71,6 +72,7 @@ MonoBehaviour:
   pushSpeed: 5
   pullSpeed: 5
   cycleDelay: 0.5
+  blockCheck: 0
   chains:
   - {fileID: 0}
   - {fileID: 0}
@@ -156,6 +158,19 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1, y: 0.4694395}
   m_EdgeRadius: 0
+--- !u!114 &849625894775414908
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 834602851570137699}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 108e9dc7bb3a9eb49a994b5f6fffd97a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 1
 --- !u!1 &1249889360754506258
 GameObject:
   m_ObjectHideFlags: 0

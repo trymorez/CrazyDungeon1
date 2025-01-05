@@ -5,12 +5,11 @@ using UnityEngine;
 public class MovingPlatform : MonoBehaviour
 {
     [SerializeField] List<Transform> navTransforms = new List<Transform>();
-    [SerializeField] List<Vector3> navPoints = new List<Vector3>();
     [SerializeField] List<float> navDuration = new List<float>();
-    [SerializeField] Vector3 navCurrent;
-    [SerializeField] Vector3 navNext;
     [SerializeField] float delay;
-    [SerializeField] int navCount;
+    
+    List<Vector3> navPoints = new List<Vector3>();
+    int navCount;
     Rigidbody2D rb;
 
     void Start()
@@ -28,13 +27,6 @@ public class MovingPlatform : MonoBehaviour
         navCount = navPoints.Count;
         StartCoroutine(Navigate());
     }
-
-    void Update()
-    {
-        
-    }
-
-
 
     IEnumerator Navigate()
     {
@@ -61,7 +53,26 @@ public class MovingPlatform : MonoBehaviour
 
                     yield return null;
                 }
+                yield return new WaitForSeconds(delay);
             }
         }
     }
+
+    void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Player"))
+        {
+            collision.transform.parent = this.transform;
+        }
+    }
+
+    void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Player"))
+        {
+            collision.transform.parent = null;
+        }
+    }
+
+
 }

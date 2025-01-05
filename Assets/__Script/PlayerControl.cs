@@ -149,7 +149,10 @@ public class PlayerControl : MonoBehaviour
 
     void DirectionChange()
     {
-        dustFX.Play();
+        if (isGrounded)
+        {
+            dustFX.Play();
+        }
         isFacingRight = !isFacingRight;
         Vector3 ls = rb.transform.localScale;
         ls.x *= -1f;
@@ -171,7 +174,7 @@ public class PlayerControl : MonoBehaviour
 
     public void Jump(InputAction.CallbackContext context)
     {
-        if (context.performed && !isJumping /* && Physics2D.OverlapBox(bottom.position, bottomSize, 0, bottomLayer) */)
+        if (context.performed && !isJumping && isGrounded)
         {
             isJumping = true;
             dustFX.Play();
@@ -191,6 +194,10 @@ public class PlayerControl : MonoBehaviour
         Gizmos.DrawWireCube(bottom.transform.position, bottomSize);
         Gizmos.color = Color.red;
         Gizmos.DrawWireCube(side.transform.position, sideSize);
+    }
+
+    bool isGrounded {
+        get { return Physics2D.OverlapBox(bottom.position, bottomSize, 0, bottomLayer); }
     }
 
 }

@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 3199219247654244779}
   - component: {fileID: 1492617552417956846}
   - component: {fileID: 8557903612178013124}
+  - component: {fileID: 1228029077316966896}
   m_Layer: 0
   m_Name: Points
   m_TagString: Untagged
@@ -201,3 +202,15 @@ MonoBehaviour:
   - {fileID: 2100000, guid: 95ddf176a96ff8c4d8ea0bcf95a1db35, type: 2}
   - {fileID: 2100000, guid: c0af9876c0549c94cbca4c630d6337f1, type: 2}
   moveAmount: 3
+--- !u!210 &1228029077316966896
+SortingGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7867242730302456943}
+  m_Enabled: 1
+  m_SortingLayerID: 1248991117
+  m_SortingLayer: 6
+  m_SortingOrder: 0
+  m_SortAtRoot: 0

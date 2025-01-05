@@ -11,6 +11,7 @@ public class SpikeController : MonoBehaviour
     [SerializeField] float pushSpeed = 3f;
     [SerializeField] float pullSpeed = 2f;
     [SerializeField] float cycleDelay = 0.5f;
+    [SerializeField] bool blockCheck = false;
     [SerializeField] GameObject[] chains;
     bool initialized = true;
     bool isBlocked = false;
@@ -77,9 +78,10 @@ public class SpikeController : MonoBehaviour
         }
     }
 
+
     void OnCollisionEnter2D(Collision2D collision)
     {
-        if (((1 << collision.gameObject.layer) & obstacleLayer) != 0)
+        if (((1 << collision.gameObject.layer) & obstacleLayer) != 0 && blockCheck)
         {
             isBlocked = true;
         }
