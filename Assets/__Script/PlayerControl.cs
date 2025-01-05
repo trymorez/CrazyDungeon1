@@ -173,7 +173,6 @@ public class PlayerControl : MonoBehaviour
     {
         if (context.performed && !isJumping /* && Physics2D.OverlapBox(bottom.position, bottomSize, 0, bottomLayer) */)
         {
-            Debug.Log("jump!");
             isJumping = true;
             dustFX.Play();
             SoundFXManager.Play("Jump");
