@@ -18,7 +18,7 @@ public class GameManager : MonoBehaviour
     public static int health = 3;
     public static int score = 0;
     public static bool levelProgressTrigger = false;
-    public static bool levelLoadedTrigger = false;
+    bool levelLoadedTrigger = true;
     public Image screenShadow;
     public static UnityAction OnScoreChanged;
 
@@ -36,33 +36,32 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    void Start()
-    {
-        screenShadow.gameObject.SetActive(false);
-        Debug.Log("OnSceneLoaded");
-    }
+    //void Start()
+    //{
+    //    screenShadow.gameObject.SetActive(false);
+    //}
 
     void Update()
     {
         //need to improve
         if (levelProgressTrigger)
         {
-            StartCoroutine(DelayAndLevelLoadNext(1f));
+            StartCoroutine(WaitAndLevelLoadNext(1f));
             levelProgressTrigger = false;
         }
         //need to improve
         if (levelLoadedTrigger)
         {
-            screenShadow.gameObject.SetActive(false);
+            screenShadow.rectTransform.parent.gameObject.SetActive(false);
             levelLoadedTrigger = false;
         }
     }
 
-    IEnumerator DelayAndLevelLoadNext(float delay)
+    IEnumerator WaitAndLevelLoadNext(float delay)
     {
         float a;
 
-        screenShadow.gameObject.SetActive(true);
+        screenShadow.rectTransform.parent.gameObject.SetActive(true);
         for (float t = 0f; t < delay; t += Time.deltaTime)
         {
             a = Mathf.Lerp(0f, 1f, t / delay);
@@ -70,6 +69,7 @@ public class GameManager : MonoBehaviour
             yield return null;
         }
         LevelLoadNext();
+        levelLoadedTrigger = true;
     }
 
     void screenShadowSetAlpha(float alpha)
@@ -93,7 +93,6 @@ public class GameManager : MonoBehaviour
             levelCurrent = 0;
         }
         SceneManager.LoadScene(levelCurrent);
-        levelLoadedTrigger = true;
     }
 
     public void LevelLoad(int level)

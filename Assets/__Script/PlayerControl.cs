@@ -36,6 +36,8 @@ public class PlayerControl : MonoBehaviour
 
     [SerializeField] ParticleSystem dustFX;
 
+    bool gameBeginning = true;
+
     bool isGoingUp {
         get {
             return rb.linearVelocityY > 0;
@@ -66,9 +68,21 @@ public class PlayerControl : MonoBehaviour
     {
         animator.SetTrigger("isNextLevel");
     }
-
+    float t = 0;
     void Update()
     {
+        
+
+        if (gameBeginning)
+        {
+            t += Time.deltaTime;
+            if (t > 0.5f)
+            {
+                gameBeginning = false;
+            }
+            return;
+        }
+
         if (!isJumping)
         {
             rb.linearVelocityX = moveX * moveSpeed;
@@ -99,7 +113,7 @@ public class PlayerControl : MonoBehaviour
             animator.SetBool("isWalking", true);
         }
         animator.SetBool("isOnWall", isOnWall);
-        // animator.SetFloat("velocityY", rb.linearVelocityY);
+        animator.SetFloat("velocityY", rb.linearVelocityY);
     }
 
     void FallingAccel()
