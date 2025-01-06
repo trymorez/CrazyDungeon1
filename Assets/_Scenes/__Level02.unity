@@ -2171,6 +2171,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 721404214}
   m_CullTransparentMesh: 1
+--- !u!4 &782477220 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8023630192137049184, guid: 58f20fa3567af684f835c1610d0166ec, type: 3}
+  m_PrefabInstance: {fileID: 1436384629}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &817881187
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -35517,20 +35522,28 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3415946313972577465, guid: 58f20fa3567af684f835c1610d0166ec, type: 3}
       propertyPath: navDuration.Array.size
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 3415946313972577465, guid: 58f20fa3567af684f835c1610d0166ec, type: 3}
       propertyPath: navTransforms.Array.size
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 3415946313972577465, guid: 58f20fa3567af684f835c1610d0166ec, type: 3}
       propertyPath: 'navDuration.Array.data[0]'
       value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 3415946313972577465, guid: 58f20fa3567af684f835c1610d0166ec, type: 3}
+      propertyPath: 'navDuration.Array.data[1]'
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3415946313972577465, guid: 58f20fa3567af684f835c1610d0166ec, type: 3}
+      propertyPath: 'navTransforms.Array.data[0]'
+      value: 
+      objectReference: {fileID: 782477220}
+    - target: {fileID: 3415946313972577465, guid: 58f20fa3567af684f835c1610d0166ec, type: 3}
       propertyPath: 'navTransforms.Array.data[1]'
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1436384630}
     - target: {fileID: 3496599875317555271, guid: 58f20fa3567af684f835c1610d0166ec, type: 3}
       propertyPath: m_LocalPosition.x
       value: 16.86
@@ -35586,6 +35599,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 58f20fa3567af684f835c1610d0166ec, type: 3}
+--- !u!4 &1436384630 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3496599875317555271, guid: 58f20fa3567af684f835c1610d0166ec, type: 3}
+  m_PrefabInstance: {fileID: 1436384629}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1516145961
 GameObject:
   m_ObjectHideFlags: 0
