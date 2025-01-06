@@ -33,6 +33,11 @@ Crazy Dungeon is a simple 2D platformer game that I'm currently developing to le
 
 
 ## Version History
+**v 0.24 (2025-01-06)**
+- Refactored moving platform class to share parent class with rotating saw
+- Rotating saw added
+- Level transition effect added
+- Player appearing effect added
 
 **v 0.22 (2025-01-05)**
 - Moving platform added
