@@ -1,9 +1,11 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Door : MonoBehaviour
 {
     Animator animator;
+    public static UnityAction OnGoingNextLevel;
 
     void Start()
     {
@@ -15,13 +17,9 @@ public class Door : MonoBehaviour
         if (collision.CompareTag("Player"))
         {
             animator.SetTrigger("Open");
-            StartCoroutine(DelayAndLevelLoadNext(1.0f));
+            SoundFXManager.Play("LevelProgress");
+            OnGoingNextLevel!.Invoke();
+            GameManager.levelProgressTrigger = true;
         }
-    }
-
-    IEnumerator DelayAndLevelLoadNext(float delay)
-    {
-        yield return new WaitForSeconds(delay);
-        GameManager.LevelLoadNext();
     }
 }

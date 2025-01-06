@@ -53,7 +53,18 @@ public class PlayerControl : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         gravityBase = rb.gravityScale;
         animator = GetComponentInChildren<Animator>();
-        
+        animator.SetTrigger("isAppearing");
+        Door.OnGoingNextLevel += GoNextLevel;
+    }
+
+    void OnDisable()
+    {
+        Door.OnGoingNextLevel -= GoNextLevel;
+    }
+
+    void GoNextLevel()
+    {
+        animator.SetTrigger("isNextLevel");
     }
 
     void Update()
@@ -88,7 +99,7 @@ public class PlayerControl : MonoBehaviour
             animator.SetBool("isWalking", true);
         }
         animator.SetBool("isOnWall", isOnWall);
-        animator.SetFloat("velocityY", rb.linearVelocityY);
+        // animator.SetFloat("velocityY", rb.linearVelocityY);
     }
 
     void FallingAccel()
