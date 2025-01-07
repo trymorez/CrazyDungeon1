@@ -96,6 +96,6 @@ public class PlayerHealth : MonoBehaviour
     IEnumerator Delay(float delay)
     {
         yield return new WaitForSeconds(delay);
-        OnDead.Invoke();
+        OnDead!.Invoke();
     }
 }

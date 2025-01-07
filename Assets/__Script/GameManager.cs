@@ -36,11 +36,6 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    //void Start()
-    //{
-    //    screenShadow.gameObject.SetActive(false);
-    //}
-
     void Update()
     {
         //need to improve

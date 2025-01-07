@@ -6,6 +6,7 @@ public class UIController : MonoBehaviour
 {
     [SerializeField] GameObject gameOver;
 
+
     void Start()
     {
         PlayerHealth.OnDead += GameOver;
@@ -18,6 +19,7 @@ public class UIController : MonoBehaviour
     void GameOver()
     {
         GameManager.isGameOn = false;
+        BGMManager.PauseBGM();
         Time.timeScale = 0.0f;
         gameOver.SetActive(true);
     }

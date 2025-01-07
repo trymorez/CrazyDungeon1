@@ -13,7 +13,7 @@ public class HUD : MonoBehaviour
     [SerializeField] RectTransform uiCanvas;
     List<Image> hearts = new List<Image>();
     RectTransform rt;
-    int healthOld = 0;
+    int healthPrevValue = 0;
 
 
     void Awake()
@@ -54,20 +54,20 @@ public class HUD : MonoBehaviour
 
     void HealthUpdate(int health)
     {
-        if (healthOld > health)
+        if (healthPrevValue > health)
         {
             healthDelete(health);
         }
-        if (healthOld < health)
+        if (healthPrevValue < health)
         {
             healthAdd(health);
         }
-        healthOld = health;
+        healthPrevValue = health;
     }
 
     void healthAdd(int health)
     {
-        for (int i = healthOld; i < health; i++)
+        for (int i = healthPrevValue; i < health; i++)
         {
             Image newHeart = Instantiate(heartPrefab, transform);
             hearts.Add(newHeart);
@@ -75,7 +75,7 @@ public class HUD : MonoBehaviour
     }    
     void healthDelete(int health)
     {
-        for (int i = health; i < healthOld; i++)
+        for (int i = health; i < healthPrevValue; i++)
         {
             if (i < hearts.Count)
             {

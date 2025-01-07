@@ -12,6 +12,8 @@ public class GameOver : MonoBehaviour
         Time.timeScale = 1.0f;
         GameManager.health = 3;
         SceneManager.LoadScene(0);
+        BGMManager.PlayBGM(true);
+        gameObject.SetActive(false);
     }
 
     public void GameQuit()

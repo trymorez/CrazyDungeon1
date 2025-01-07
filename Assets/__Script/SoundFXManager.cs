@@ -6,11 +6,11 @@ public class SoundFXManager : MonoBehaviour
     static SoundFXManager instance;
     static AudioSource audioSource;
     static SoundFXLibrary soundSFXLibrary;
-    [SerializeField] Slider soundVolumeSlider;
+    public Slider volumeSlider;
     
     void Awake()
     {
-        if (instance == null)
+        if (!instance)
         {
             instance = this;
             audioSource = GetComponent<AudioSource>();
@@ -22,15 +22,6 @@ public class SoundFXManager : MonoBehaviour
             Destroy(gameObject);
         }
         
-    }
-
-    void Start()
-    {
-        float volume = PlayerPrefs.GetFloat("SoundVolume");
-        soundVolumeSlider.value = volume;
-        SetVolume(volume);
-
-        soundVolumeSlider.onValueChanged.AddListener(delegate { OnValueChanged(); });
     }
 
     public static void Play(string clipname)
@@ -45,11 +36,5 @@ public class SoundFXManager : MonoBehaviour
     public static void SetVolume(float volume)
     {
         audioSource.volume = volume;
-        PlayerPrefs.SetFloat("SoundVolume", volume);
-    }
-
-    public void OnValueChanged()
-    {
-        SetVolume(soundVolumeSlider.value);
     }
 }
