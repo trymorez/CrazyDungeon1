@@ -33,6 +33,10 @@ Crazy Dungeon is a simple 2D platformer game that I'm currently developing to le
 
 
 ## Version History
+
+**v 0.252 (2025-01-07)**
+- Provided default values for sound and music volume in case there are no PlayerPrefs yet
+
 **v 0.25 (2025-01-07)**
 - BGM added
 - BGM volume slider
