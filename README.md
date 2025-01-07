@@ -33,6 +33,11 @@ Crazy Dungeon is a simple 2D platformer game that I'm currently developing to le
 
 
 ## Version History
+**v 0.25 (2025-01-07)**
+- BGM added
+- BGM volume slider
+- Refactored sound and BGM manager so it doesn't require reference to volume sliders
+
 **v 0.24 (2025-01-06)**
 - Refactored moving platform class to share parent class with rotating saw
 - Rotating saw added
