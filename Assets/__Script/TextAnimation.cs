@@ -5,7 +5,8 @@ using UnityEngine;
 
 public class TextAnimation : MonoBehaviour
 {
-    public AnimationCurve curve;
+    public AnimationCurve curve1;
+    public AnimationCurve curve2;
     [SerializeField] float duration = 1.5f;
     float elapsedTime;
     RectTransform rt;
@@ -16,7 +17,6 @@ public class TextAnimation : MonoBehaviour
         rt = GetComponent<RectTransform>();
         textMeshPro = GetComponent<TMP_Text>();
         StartCoroutine(Step1());
-        
     }
 
     IEnumerator Step1()
@@ -27,26 +27,24 @@ public class TextAnimation : MonoBehaviour
         while (elapsedTime < duration)
         {
             elapsedTime += Time.deltaTime;
-            float scale = curve.Evaluate(elapsedTime / duration);
+            float scale = curve1.Evaluate(elapsedTime / duration);
             rt.localScale = scaleOriginal * scale;
             yield return null;
         }
         StartCoroutine(Step2());
-
     }
 
     IEnumerator Step2()
     {
-        float duration = 0.5f;
-        float delay = 2f;
-        Color startColor = textMeshPro.color;
+        Vector3 scaleOriginal = rt.localScale;
 
-        yield return new WaitForSeconds(delay);
-
-        for (float t = 0; t <= duration; t += Time.deltaTime)
+        yield return new WaitForSeconds(1f);
+        elapsedTime = 0;
+        while (elapsedTime < duration)
         {
-            float alpha = Mathf.Lerp(startColor.a, 0, t / duration);
-            textMeshPro.color = new Color(startColor.r, startColor.g, startColor.b, alpha);
+            elapsedTime += Time.deltaTime;
+            float scale = curve2.Evaluate(elapsedTime / duration);
+            rt.localScale = scaleOriginal * scale;
             yield return null;
         }
     }

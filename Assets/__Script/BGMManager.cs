@@ -9,7 +9,6 @@ public class BGMManager : MonoBehaviour
     static BGMManager instance;
     static AudioSource audioSource;
     public AudioClip clip;
-    public Slider volumeSlider;
 
     void Awake()
     {

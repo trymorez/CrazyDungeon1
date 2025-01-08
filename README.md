@@ -33,6 +33,11 @@ Crazy Dungeon is a simple 2D platformer game that I'm currently developing to le
 
 
 ## Version History
+**v 0.26 (2025-01-08)**
+- Options dialog box has been added (Press ESC to open Options dialog box)
+- Sound and music volume slider has been moved to the options dialog box
+- The game over dialog box has been redesigned
+- The player can't take damage while dead
 
 **v 0.252 (2025-01-07)**
 - Provided default values for sound and music volume in case there are no PlayerPrefs yet

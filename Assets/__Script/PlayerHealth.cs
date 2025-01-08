@@ -40,6 +40,10 @@ public class PlayerHealth : MonoBehaviour
         {
             return;
         }
+        if (!GameManager.isGameOn)
+        {
+            return;
+        }
 
         GameManager.health -= damage;
         if (GameManager.health < 0)
@@ -88,6 +92,7 @@ public class PlayerHealth : MonoBehaviour
     void PlayerDie()
     {
         rb.constraints = RigidbodyConstraints2D.FreezeAll;
+        GameManager.isGameOn = false;
         SoundFXManager.Play("Death");
         animator.SetTrigger("isDead");
         StartCoroutine(Delay(1.3f));

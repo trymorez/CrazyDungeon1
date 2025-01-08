@@ -68,11 +68,11 @@ public class PlayerControl : MonoBehaviour
     {
         animator.SetTrigger("isNextLevel");
     }
+
     float t = 0;
     void Update()
     {
-        
-
+        //delay at the game start for the chracter creation effect
         if (gameBeginning)
         {
             t += Time.deltaTime;

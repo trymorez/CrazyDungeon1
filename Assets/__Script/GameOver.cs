@@ -11,6 +11,7 @@ public class GameOver : MonoBehaviour
         GameManager.isGameOn = true;
         Time.timeScale = 1.0f;
         GameManager.health = 3;
+        GameManager.score = 0;
         SceneManager.LoadScene(0);
         BGMManager.PlayBGM(true);
         gameObject.SetActive(false);
