@@ -32,7 +32,9 @@ public class EnemyMushroom : Enemy
             }
             yield return null;
         }
+        rb.bodyType = RigidbodyType2D.Dynamic;
         rb.linearVelocity = Vector3.zero;
+        rb.AddForce(Vector3.down * 2f, ForceMode2D.Impulse);
         gameObject.layer = enemyDeadLayer;
     }
 

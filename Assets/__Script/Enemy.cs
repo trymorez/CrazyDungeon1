@@ -20,6 +20,7 @@ public class Enemy : MonoBehaviour
     [SerializeField] protected int enemyLayer = 11;
     [SerializeField] protected int enemyDeadLayer = 12;
     [SerializeField] protected int enemyTmpLayer = 13;
+    [SerializeField] protected ParticleSystem crashFX;
 
     public static UnityAction<int, Vector3, bool> OnPlayerHit;
     protected Rigidbody2D rb;
@@ -38,8 +39,9 @@ public class Enemy : MonoBehaviour
         currentHealth = health;
         rb = GetComponent<Rigidbody2D>();
         animator = rb.GetComponentInChildren<Animator>();
+        crashFX = rb.GetComponentInChildren<ParticleSystem>();
+
         headSize = new Vector3(headWidth, headHeight, 0);
-        
     }
 
     void OnCollisionEnter2D(Collision2D collision)
@@ -57,6 +59,15 @@ public class Enemy : MonoBehaviour
             {
                 GameManager.ScoreAdd(score);
                 OnGettingPoint?.Invoke(transform.position, score);
+                
+                crashFX.Play();
+                rb.bodyType = RigidbodyType2D.Dynamic;
+                rb.linearVelocity = Vector3.zero;
+                rb.AddForce(Vector3.down * 2f, ForceMode2D.Impulse);
+                rb.constraints = RigidbodyConstraints2D.None;
+                rb.AddTorque(90);
+                gameObject.layer = enemyDeadLayer;
+
                 EnemyDead();
             }
         }
@@ -73,9 +84,9 @@ public class Enemy : MonoBehaviour
     void MakeUninteractable(float duration)
     {
         gameObject.layer = enemyTmpLayer;
-        Invoke("Makeinteractable", duration);
+        Invoke("MakeInteractable", duration);
     }
-    void Makeinteractable()
+    void MakeInteractable()
     {
         gameObject.layer = enemyLayer;
     }

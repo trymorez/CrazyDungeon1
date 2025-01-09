@@ -21,7 +21,8 @@ Crazy Dungeon is a simple 2D platformer game that I'm currently developing to le
 
 ![screenshot](Assets/ScreenShot/screenshot01.png)
 ![screenshot](Assets/ScreenShot/screenshot02.png)
-
+![screenshot](Assets/ScreenShot/screenshot03.png)
+![screenshot](Assets/ScreenShot/screenshot04.png)
 
 ## Used Assets
 
@@ -33,6 +34,10 @@ Crazy Dungeon is a simple 2D platformer game that I'm currently developing to le
 
 
 ## Version History
+**v 0.27 (2025-01-09)**
+- A new enemy type (bluebird) has been added
+- Added new effect for player jump attack
+
 **v 0.26 (2025-01-08)**
 - Options dialog box has been added (Press ESC to open Options dialog box)
 - Sound and music volume slider has been moved to the options dialog box
@@ -97,7 +102,6 @@ Crazy Dungeon is a simple 2D platformer game that I'm currently developing to le
 * Player character dead animation added
 * Game over screen now works properly
 * Added 1st basic enemy type (mushroom)
-
 
 **v 0.1 - (2024-12-30)**
 - Initial version

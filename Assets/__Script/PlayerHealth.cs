@@ -58,7 +58,8 @@ public class PlayerHealth : MonoBehaviour
             animator.SetTrigger("isHit");
         }
         rb.linearVelocity = Vector3.zero;
-        rb.linearVelocityY = 1.0f * force;
+        //rb.linearVelocityY = 1.0f * force;
+        rb.AddForceY(force, ForceMode2D.Impulse);
 
         if (GameManager.health <= 0 || instantDeath)
         {

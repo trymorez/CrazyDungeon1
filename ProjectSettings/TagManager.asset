@@ -59,5 +59,14 @@ TagManager:
   - name: Sorting Layer 6
     uniqueID: 1248991117
     locked: 0
+  - name: Item
+    uniqueID: 405582115
+    locked: 0
+  - name: Enemy
+    uniqueID: 3025524145
+    locked: 0
+  - name: Effect
+    uniqueID: 1556842155
+    locked: 0
   m_RenderingLayers:
   - Default
