@@ -5,7 +5,7 @@ Crazy Dungeon is a simple 2D platformer game that I'm currently developing to le
 
 - Recommended Unity version: Unity 6 (6000.0.32f1 and later)
 
-
+[Play Game](https://trymorez.github.io/unity-2d-platformer/Build/index.html)
 
 
 ## Authors
