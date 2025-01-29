@@ -1,7 +1,7 @@
 
 # Crazy Dungeon
 
-[**Play Game!!!**](https://trymorez.github.io/unity-2d-platformer/Build/index.html)
+[**[Play Game!]**](https://trymorez.github.io/unity-2d-platformer/Build/index.html)
 
 Crazy Dungeon is a simple 2D platformer game that I'm currently developing to learn Unity and build my portfolio. It's still in the very early stages, but I plan to add a variety of enemies, hazards, and platform types.
 
